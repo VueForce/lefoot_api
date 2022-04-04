@@ -1,6 +1,6 @@
 # vue-project
 
-## Requirimentos
+## Requerimentos
 
 - [Node JS 16](https://nodejs.org/en/download/)
 
