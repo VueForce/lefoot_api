@@ -1,5 +1,9 @@
 # vue-project
 
+## Requirimentos
+
+- [Node JS 16](https://nodejs.org/en/download/)
+
 This template should help get you started developing with Vue 3 in Vite.
 
 ## Customize configuration
