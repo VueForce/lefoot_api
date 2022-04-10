@@ -13,6 +13,16 @@ const router = createRouter({
       path: '/about',
       name: 'about',
       component: () => import('../views/AboutView.vue')
+    },
+    {
+      path: '/redefinir-senha',
+      name: 'redefinir-senha',
+      component: () => import('../views/RedefinirSenhaView.vue')
+    },
+    {
+      path: '/tela-csv',
+      name: 'tela-csv',
+      component: () => import('../views/TelaCsvView.vue')
     }
   ]
 })

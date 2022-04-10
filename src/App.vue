@@ -4,7 +4,7 @@ import HelloWorld from '@/components/HelloWorld.vue'
 </script>
 
 <template>
-  <header>
+  <!-- <header>
     <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
 
     <div class="wrapper">
@@ -13,9 +13,10 @@ import HelloWorld from '@/components/HelloWorld.vue'
       <nav>
         <RouterLink to="/">Home</RouterLink>
         <RouterLink to="/about">About</RouterLink>
+        <RouterLink to="/redefinir-senha">Redefinir Senha</RouterLink>
       </nav>
     </div>
-  </header>
+  </header> -->
 
   <RouterView />
 </template>
@@ -24,11 +25,10 @@ import HelloWorld from '@/components/HelloWorld.vue'
 @import '@/assets/base.css';
 
 #app {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-
-  font-weight: normal;
+  display: flex;
+  place-items: center;
+  align-content: center;
+  justify-content: center;
 }
 
 header {
@@ -81,13 +81,9 @@ nav a:first-of-type {
 
 @media (min-width: 1024px) {
   body {
-    display: flex;
-    place-items: center;
   }
 
   #app {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
     padding: 0 2rem;
   }
 
