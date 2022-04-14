@@ -30,12 +30,12 @@ public class CSVHelper {
       BufferedReader fileReader = new BufferedReader(new InputStreamReader(is, "UTF-8"));
       CSVParser csvParser = new CSVParser(
         fileReader,
-        CSVFormat.DEFAULT.withFirstRecordAsHeader().withIgnoreHeaderCase().withTrim()
+        CSVFormat.EXCEL.withDelimiter(';').withFirstRecordAsHeader().withIgnoreHeaderCase().withTrim()
       );
     ) {
       List<CSVUploadData> uploadedData = new ArrayList<CSVUploadData>();
       Iterable<CSVRecord> csvRecords = csvParser.getRecords();
-      for (CSVRecord csvRecord : csvRecords) {  
+      for (CSVRecord csvRecord : csvRecords) {
         CSVUploadData csvUploadData = new CSVUploadData(
           csvRecord.get("nome"),
           Integer.parseInt(csvRecord.get("idade")),

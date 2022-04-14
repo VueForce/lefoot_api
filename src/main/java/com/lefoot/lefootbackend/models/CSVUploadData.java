@@ -12,19 +12,9 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "CSV_upload_data")
 public class CSVUploadData {
-  private long id;
-  private String name;
-  private Integer age;
-  private String cpf;
-  private Date birthdate;
-  private String gender;
-  private String email;
-  private String cep;
-  private String address;
-  private Integer number;
-  private String neighborhood;
-  private String city;
-  private String state;
+  public CSVUploadData() {
+
+  }
 
   public CSVUploadData(
     String name,
@@ -56,6 +46,7 @@ public class CSVUploadData {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private long id;
   public long getId() {
     return id;
   }
@@ -65,6 +56,7 @@ public class CSVUploadData {
   }
 
   @Column(name = "name", nullable = false)
+  private String name;
   public String getName() {
       return name;
   }
@@ -73,6 +65,7 @@ public class CSVUploadData {
   }
 
   @Column(name = "age", nullable = false)
+  private Integer age;
   public Integer getAge() {
       return age;
   }
@@ -81,6 +74,7 @@ public class CSVUploadData {
   }
 
   @Column(name = "cpf", nullable = false)
+  private String cpf;
   public String getCpf() {
       return cpf;
   }
@@ -89,6 +83,7 @@ public class CSVUploadData {
   }
 
   @Column(name = "birthdate", nullable = false)
+  private Date birthdate;
   public Date getBirthdate() {
       return birthdate;
   }
@@ -97,6 +92,7 @@ public class CSVUploadData {
   }
 
   @Column(name = "gender", nullable = false)
+  private String gender;
   public String getGender() {
       return gender;
   }
@@ -105,6 +101,7 @@ public class CSVUploadData {
   }
 
   @Column(name = "email", nullable = false)
+  private String email;
   public String getEmail() {
       return email;
   }
@@ -113,6 +110,7 @@ public class CSVUploadData {
   }
 
   @Column(name = "cep", nullable = false)
+  private String cep;
   public String getCep() {
       return cep;
   }
@@ -121,6 +119,7 @@ public class CSVUploadData {
   }
 
   @Column(name = "address", nullable = false)
+  private String address;
   public String getAddress() {
       return address;
   }
@@ -129,6 +128,7 @@ public class CSVUploadData {
   }
 
   @Column(name = "number", nullable = false)
+  private Integer number;
   public Integer getNumber() {
       return number;
   }
@@ -137,6 +137,7 @@ public class CSVUploadData {
   }
 
   @Column(name = "neighborhood", nullable = false)
+  private String neighborhood;
   public String getNeighborhood() {
       return neighborhood;
   }
@@ -145,6 +146,7 @@ public class CSVUploadData {
   }
 
   @Column(name = "city", nullable = false)
+  private String city;
   public String getCity() {
       return city;
   }
@@ -153,6 +155,7 @@ public class CSVUploadData {
   }
 
   @Column(name = "state", nullable = false)
+  private String state;
   public String getState() {
       return state;
   }
