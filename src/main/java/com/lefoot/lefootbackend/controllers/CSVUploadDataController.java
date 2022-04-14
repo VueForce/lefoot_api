@@ -30,7 +30,7 @@ public class CSVUploadDataController {
         message = "File uploaded successfully: " + file.getOriginalFilename();
         return ResponseEntity.status(HttpStatus.OK).body(new ResponseMessage(message));
       } catch (Exception e) {
-        message = "Could not upload file: " + file.getOriginalFilename() + " .Error message: " + e.getMessage();
+        message = "Could not upload file: " + file.getOriginalFilename();
         return ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).body(new ResponseMessage(message));
       }
     }
