@@ -23,7 +23,22 @@ const router = createRouter({
       path: '/tela-csv',
       name: 'tela-csv',
       component: () => import('../views/TelaCsvView.vue')
-    }
+    },
+    {
+      path: '/criar-conta',
+      name: 'criar-conta',
+      component: () => import('../views/CriarContaView.vue')
+    },
+    {
+      path: '/tela-login',
+      name: 'tela-login',
+      component: () => import('../views/TelaLoginView.vue')
+    },
+    {
+      path: '/filtrar-clientes',
+      name: 'filtrar-clientes',
+      component: () => import('../views/FiltrarClientesView.vue')
+    },
   ]
 })
 
