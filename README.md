@@ -4,7 +4,7 @@
 
 - [Oracle Java 11](https://www.oracle.com/java/technologies/downloads/#java11-linux)
 - [Apache Maven 3.6.3](https://archive.apache.org/dist/maven/maven-3/3.6.3/binaries/)
-- [Spring Tools Suite 4.14](https://spring.io/tools)
+- [IntelliJ Idea](https://www.jetbrains.com/pt-br/idea/download/#section=linux)
 - [DBeaver Community 22](https://dbeaver.io/download/)
 - [Docker](https://docs.docker.com/desktop/windows/install/)
 - [Docker compose](https://docs.docker.com/compose/install/)
