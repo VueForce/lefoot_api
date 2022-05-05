@@ -2,8 +2,7 @@ package com.lefoot.lefootbackend.models;
 
 public enum Genders {
   MALE("male"),
-  FEMALE("female"),
-  OTHER("other");
+  FEMALE("female")
 
   private String gender;
 

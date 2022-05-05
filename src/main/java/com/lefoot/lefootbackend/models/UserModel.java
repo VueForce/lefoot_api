@@ -26,17 +26,14 @@ public class UserModel {
 
   @NotBlank
   @Size(max = 60)
-  @Email
   private String fname;
 
   @NotBlank
   @Size(max = 60)
-  @Email
   private String lname;
 
   @NotBlank
   @Size(max = 60)
-  @Email
   private String status;
 
   @NotBlank
