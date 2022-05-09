@@ -8,9 +8,10 @@
             <input type="file" @change="uploadFile" ref="file" name="arquivo" id="arquivo" accept=".csv">
         </div>
     </form>
-      <div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 32px;">
-        <Button style="margin-top: 10px">Voltar</Button>
-        <Button style="margin-top: 10px" @click="submitFile">Enviar</Button>
+      <div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 20px;">
+        <Button class="button is-dark is-small" style="margin-top: 10px">Voltar</Button>
+        <Button class="button is-dark is-small" style="margin-top: 10px" @click="submitFile">Enviar</Button>
+
       </div>
   </div>
 </template>
@@ -23,15 +24,9 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     color: #2c3e50;
-    margin-top: 60px;
     display: flex;
     flex-direction: column;
     /* color: white; */
-    background-color: white;
-    padding: 50px;
-    border-radius: 10px;
-    border: 1px solid rgb(148, 148, 148);
-    box-shadow: 1px 2px 2px rgba(0, 0, 0, 0.733);
 }
 button {
   padding: 10px;
@@ -91,15 +86,19 @@ export default {
         
         formData.append('file', this.file);
 
-        const headers = { 'Content-Type': 'multipart/form-data' };
+        const headers = { 'Content-Type': 'multipart/form-data', 
+        'Authorization': `Bearer ${localStorage.getItem('userToken')}` };
         
-        axios.post('http://localhost:8080/api/csv/upload', formData, { headers })
+        axios.post('http://localhost:8081/api/csv/upload', formData, { headers })
         .then((res) => {
           res.data.files;
           res.status;
 
           if(res.status === 200) {
             alert(`O arquivo ${this.fileName} foi enviado com sucesso`);
+          } else {
+            alert(`Deu erro`);
+
           }
         });
       }

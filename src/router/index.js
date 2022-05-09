@@ -19,26 +19,26 @@ const router = createRouter({
     //   name: 'Redefinir',
     //   component: () => import('../views/RedefinirSenhaView.vue')
     // },
+    // {
+    //   path: '/',
+    //   name: 'Csv',
+    //   component: () => import('../views/TelaCsvView.vue')
+    // },
     {
-      path: '/',
-      name: 'Csv',
-      component: () => import('../views/TelaCsvView.vue')
+      path: '/new/account',
+      name: 'Conta',
+      component: () => import('../views/CriarContaView.vue')
     },
-    // {
-    //   path: '/new/account',
-    //   name: 'Conta',
-    //   component: () => import('../views/CriarContaView.vue')
-    // },
-    // {
-    //   path: '/login',
-    //   name: 'Login',
-    //   component: () => import('../views/TelaLoginView.vue')
-    // },
-    // {
-    //   path: '/filtrar-clientes',
-    //   name: 'filtrar-clientes',
-    //   component: () => import('../views/FiltrarClientesView.vue')
-    // },
+    {
+      path: '/login',
+      name: 'Login',
+      component: () => import('../views/TelaLoginView.vue')
+    },
+    {
+      path: '/filtrar-clientes',
+      name: 'filtrar-clientes',
+      component: () => import('../views/FiltrarClientesView.vue')
+    },  
   ]
 })
 
