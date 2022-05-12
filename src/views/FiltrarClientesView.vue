@@ -39,31 +39,74 @@
       <csv-input />
     </div>
 
-    <div v-if="listaFiltrada.length == 0">
-      Nenhum registro
-    </div>
+    <div v-if="listaFiltrada.length == 0">Nenhum registro</div>
 
     <div v-if="listaFiltrada.length > 0" class="table-container">
+      <nav
+        class="pagination is-right"
+        role="navigation"
+        aria-label="pagination"
+      >
+        <label>{{ paginaAtual + 1 }}</label>
+        <a class="pagination-previous" @click="paginaAnterior">Previous</a>
+        <a class="pagination-next" @click="proximaPagina">Next page</a>
+        <ul class="pagination-list">
+          <li>
+            <a
+              class="pagination-link"
+              aria-label="Page 1"
+              aria-current="page"
+              @click="atualizarPaginaAtual(0)"
+              >1</a
+            >
+          </li>
+          <li>
+            <a
+              class="pagination-link"
+              aria-label="Goto page 2"
+              @click="atualizarPaginaAtual(1)"
+              >2</a
+            >
+          </li>
+          <li>
+            <a
+              class="pagination-link"
+              aria-label="Goto page 3"
+              @click="atualizarPaginaAtual(2)"
+              >3</a
+            >
+          </li>
+        </ul>
+      </nav>
+
       <table class="table is-bordered is-striped is-narrow is-hoverable">
         <thead>
           <tr>
+            <th></th>
             <th @click="() => sortList('name')"><strong>Nome</strong></th>
             <th @click="() => sortList('age')"><strong>Idade</strong></th>
             <th @click="() => sortList('cpf')"><strong>CPF</strong></th>
-            <th @click="() => sortList('birthdate')"><strong>Data de nascimento</strong></th>
+            <th @click="() => sortList('birthdate')">
+              <strong>Data de nascimento</strong>
+            </th>
             <th @click="() => sortList('gender')"><strong>Gênero</strong></th>
             <th @click="() => sortList('email')"><strong>E-mail</strong></th>
             <th @click="() => sortList('cep')"><strong>CEP</strong></th>
-            <th @click="() => sortList('address')"><strong>Endereço</strong></th>
+            <th @click="() => sortList('address')">
+              <strong>Endereço</strong>
+            </th>
             <th @click="() => sortList('number')"><strong>Número</strong></th>
-            <th @click="() => sortList('neighborhood')"><strong>Bairro</strong></th>
+            <th @click="() => sortList('neighborhood')">
+              <strong>Bairro</strong>
+            </th>
             <th @click="() => sortList('city')"><strong>Municipio</strong></th>
             <th @click="() => sortList('state')"><strong>Estado</strong></th>
           </tr>
         </thead>
 
         <tbody>
-          <tr v-for="pessoa in listaFiltrada" :key="pessoa.name">
+          <tr v-for="(pessoa, index) in listaFiltrada" :key="pessoa.name">
+            <td>{{ index + 1 }}</td>
             <td>{{ pessoa.name }}</td>
             <td>{{ pessoa.age }}</td>
             <td>{{ pessoa.cpf }}</td>
@@ -109,7 +152,9 @@ export default {
       dados: [],
       showCsvInput: false,
       sortOrder: "ASC",
-      sortType: ""
+      sortType: "",
+      paginaAtual: 0,
+      qtdeRegistros: 15,
     };
   },
   methods: {
@@ -132,15 +177,17 @@ export default {
       }
 
       if (this.sortOrder === "ASC" && this.sortType === type) {
-        this.sortOrder = "DESC"
+        this.sortOrder = "DESC";
       } else {
-        this.sortOrder = "ASC"
+        this.sortOrder = "ASC";
       }
 
       if (this.sortOrder === "ASC") {
         this.listaFiltrada.sort((a, b) => a[type].localeCompare(b[type]));
       } else if (this.sortOrder === "DESC") {
-        this.listaFiltrada.sort((a, b) => a[type].localeCompare(b[type])).reverse();
+        this.listaFiltrada
+          .sort((a, b) => a[type].localeCompare(b[type]))
+          .reverse();
       }
     },
 
@@ -154,8 +201,35 @@ export default {
         .get("http://localhost:8081/api/csv/csvdata", { headers })
         .then((res) => {
           this.dados = res.data;
-          this.listaFiltrada = res.data;
+          console.log(unescape(encodeURIComponent(res.data)));
+          this.listaFiltrada = res.data.slice(
+            this.paginaAtual * this.qtdeRegistros,
+            this.qtdeRegistros
+          );
         });
+    },
+
+    proximaPagina() {
+      this.atualizarPaginaAtual(this.paginaAtual + 1);
+    },
+
+    paginaAnterior() {
+      if (this.paginaAtual > 0) {
+        this.atualizarPaginaAtual(this.paginaAtual - 1);
+      }
+    },
+
+    atualizarPaginaAtual(pagina) {
+      this.paginaAtual = pagina;
+      this.updateListPage();
+    },
+
+    updateListPage() {
+      let indiceAtual = this.paginaAtual * this.qtdeRegistros;
+      this.listaFiltrada = this.dados.slice(
+        indiceAtual,
+        indiceAtual + this.qtdeRegistros
+      );
     },
   },
 };
@@ -182,7 +256,6 @@ export default {
 }
 
 table {
-  margin-top: 20px;
   overflow-x: scroll;
 }
 
