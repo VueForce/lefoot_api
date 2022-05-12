@@ -37,7 +37,7 @@ import HelloWorld from "@/components/HelloWorld.vue";
     <nav class="navbar" role="navigation" aria-label="main navigation">
       <div class="navbar-brand">
         <a class="navbar-item">
-          <img src="./assets/logo.jpeg" width="100">
+          <img src="./assets/logo.svg" width="100">
         </a>
         <a class="navbar-item" href="/">Home</a>
         <a class="navbar-item" href="/new/account">Criar conta</a>
@@ -136,7 +136,6 @@ nav a:first-of-type {
 
   nav {
     text-align: left;
-    margin-left: -1rem;
     font-size: 1rem;
 
     padding: 1rem 0;
